@@ -1,5 +1,4 @@
 ADMIRALTY_STATIONS_ENDPOINT = 'https://admiraltyapi.azure-api.net/uktidalapi/api/V1/Stations/'
-ADMIRALTY_API_KEY = 'd1d002a51469471e91cd4f571468c456'
 ADMIRALTY_HEADER_KEY = 'Ocp-Apim-Subscription-Key'
 HAMMERSMITH_BRIDGE_STATION_ID = '0115'
 
