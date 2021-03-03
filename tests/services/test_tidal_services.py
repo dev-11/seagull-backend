@@ -1,6 +1,6 @@
 import unittest
-from services.tidal_service import TidalService
 
+from services.tidal_service import TidalService
 
 # class TestTidalService(unittest.TestCase):
 #     def test_01(self):

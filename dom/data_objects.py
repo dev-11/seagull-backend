@@ -1,7 +1,7 @@
-from dataclasses import dataclass
-from datetime import datetime, date
-from typing import List
 import enum
+from dataclasses import dataclass
+from datetime import date, datetime
+from typing import List
 
 
 class TideType(enum.Enum):
@@ -25,9 +25,28 @@ class TideEvents:
     events: List[TideEvent]
 
 
-tide_events = TideEvents(date(2021, 3, 2), [
-    TideEvent(TideType.Low, datetime(2021, 3, 2, hour=0, minute=13, second=59), 0.04281385004939631),
-    TideEvent(TideType.High, datetime(2021, 3, 2, hour=4, minute=26, second=20), 5.832805198778108),
-    TideEvent(TideType.Low, datetime(2021, 3, 2, hour=12, minute=41, second=19), -0.19908685388005984),
-    TideEvent(TideType.High, datetime(2021, 3, 2, hour=16, minute=48, second=2), 5.838791925941982),
-])
+tide_events = TideEvents(
+    date(2021, 3, 2),
+    [
+        TideEvent(
+            TideType.Low,
+            datetime(2021, 3, 2, hour=0, minute=13, second=59),
+            0.04281385004939631,
+        ),
+        TideEvent(
+            TideType.High,
+            datetime(2021, 3, 2, hour=4, minute=26, second=20),
+            5.832805198778108,
+        ),
+        TideEvent(
+            TideType.Low,
+            datetime(2021, 3, 2, hour=12, minute=41, second=19),
+            -0.19908685388005984,
+        ),
+        TideEvent(
+            TideType.High,
+            datetime(2021, 3, 2, hour=16, minute=48, second=2),
+            5.838791925941982,
+        ),
+    ],
+)

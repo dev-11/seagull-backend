@@ -1,9 +1,11 @@
 from abc import ABC, abstractmethod
+from datetime import datetime
+
+from settings import (DATE_FORMAT_WITH_MILLISECONDS,
+                      DATE_FORMAT_WITHOUT_MILLISECONDS)
 
 from .data_objects import TideEvent, TideType
 from .exceptions import InvalidDataToMapException
-from datetime import datetime
-from settings import DATE_FORMAT_WITH_MILLISECONDS, DATE_FORMAT_WITHOUT_MILLISECONDS
 
 
 class Mapper(ABC):
@@ -23,13 +25,16 @@ class AdmiraltyEventTypeMapper(Mapper):
 
 
 class AdmiraltyDataMapper(Mapper):
-
     def __init__(self, event_type_mapper: AdmiraltyEventTypeMapper):
         self._event_type_mapper = event_type_mapper
 
     @staticmethod
     def get_correct_date_format(date: str):
-        return DATE_FORMAT_WITH_MILLISECONDS if '.' in date else DATE_FORMAT_WITHOUT_MILLISECONDS
+        return (
+            DATE_FORMAT_WITH_MILLISECONDS
+            if '.' in date
+            else DATE_FORMAT_WITHOUT_MILLISECONDS
+        )
 
     def to_dom(self, source):
         if source is None:
@@ -46,6 +51,8 @@ class AdmiraltyDataMapper(Mapper):
 
         return TideEvent(
             type=self._event_type_mapper.to_dom(source['EventType']),
-            time=datetime.strptime(source['DateTime'], self.get_correct_date_format(source['DateTime'])),
-            height=source['Height']
+            time=datetime.strptime(
+                source['DateTime'], self.get_correct_date_format(source['DateTime'])
+            ),
+            height=source['Height'],
         )
