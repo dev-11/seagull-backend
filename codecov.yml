@@ -35,3 +35,4 @@ ignore:
   - "entry_point/*"
   - "repositories/*"
   - "services/external_services/*"
+  - "app.py"

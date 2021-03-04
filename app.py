@@ -2,7 +2,15 @@ from entry_point.app import lambda_handler
 
 
 def main():
-    print(lambda_handler(None, None))
+    event = {
+      "params": {
+        "header": {
+          "X-seagull-location": "ChiswickEyot"
+        }
+      }
+    }
+
+    print(lambda_handler(event, None))
 
 
 if __name__ == "__main__":

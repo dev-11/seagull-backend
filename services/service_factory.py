@@ -1,8 +1,9 @@
 import repositories.environment_repository as er
 import settings
 from dom.mappers import AdmiraltyDataMapper, AdmiraltyEventTypeMapper
+from typing import List
 
-from .adjust_time_service import AdjustTimeService
+from .adjust_time_service import ChiswickEyotTimeService, AdjustTimeService
 from .external_services.admiralty_service import AdmiraltyService
 from .secret_manager_service import SecretManagerService
 from .tidal_service import TidalService
@@ -17,6 +18,10 @@ def admiralty_service_instance():
 
 
 def tidal_service_instance():
-    return TidalService(
-        admiralty_service_instance(), AdmiraltyDataMapper(AdmiraltyEventTypeMapper()), AdjustTimeService(),
-    )
+    return TidalService(ChiswickEyotTimeService())
+
+
+def get_all_time_services() -> List[AdjustTimeService]:
+    return [
+        ChiswickEyotTimeService(),
+    ]
