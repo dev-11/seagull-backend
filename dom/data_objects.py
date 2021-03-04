@@ -1,5 +1,6 @@
 import enum
 from dataclasses import dataclass
+from dataclasses_json import dataclass_json
 from datetime import date, datetime
 from typing import List
 
@@ -12,6 +13,7 @@ class TideType(enum.Enum):
     Falling = 4
 
 
+@dataclass_json
 @dataclass
 class TideEvent:
     type: TideType

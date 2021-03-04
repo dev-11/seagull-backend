@@ -1,9 +1,8 @@
-from services import service_factory
+from entry_point.app import lambda_handler
 
 
 def main():
-    instance = service_factory.tidal_service_instance()
-    print(instance.get_tidal_data())
+    print(lambda_handler(None, None))
 
 
 if __name__ == "__main__":

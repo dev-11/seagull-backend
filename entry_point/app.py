@@ -1,9 +1,8 @@
+from services import service_factory
+
+
 def lambda_handler(event, context):
 
-    # TODO implement
-    #
-    # tidal_service.get_data(station_id)
-    #
-    #
+    instance = service_factory.tidal_service_instance()
 
-    return {'statusCode': 200, 'body': 'Hello from Lambda!'}
+    return {'statusCode': 200, 'body': [a.to_json() for a in instance.get_tidal_data()]}
