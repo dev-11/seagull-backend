@@ -4,8 +4,8 @@ from entry_point.app import lambda_handler
 def main():
     event = {
       "params": {
-        "header": {
-          "X-seagull-location": "ChiswickEyot"
+        "querystring": {
+          "location": "ChiswickEyot"
         }
       }
     }

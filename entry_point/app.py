@@ -5,15 +5,17 @@ from services.station_id_service import StationIdService
 
 
 def lambda_handler(event, context):
-
-    headers = event["params"]["header"]
+    querystring = event["params"]["querystring"]
     location = (
-        headers[s.LOCATION_HEADER_KEY]
-        if s.LOCATION_HEADER_KEY in headers
+        querystring[s.QUERYSTRING_LOCATION_KEY]
+        if s.QUERYSTRING_LOCATION_KEY in querystring
         else None
     )
 
     station_id = StationIdService().get_station_id(location)
+
+    if station_id is None:
+        return {'statusCode': 400, 'body': f'unknown location {location}'}
 
     admiralty = service_factory.admiralty_service_instance()
     admiralty_data = admiralty.get_tidal_events(station_id)
