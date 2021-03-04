@@ -66,12 +66,15 @@ class AdmiraltyDataMapperTests(unittest.TestCase):
         self.assertEqual(TideType.Low, dom.type)
         self.assertEqual(0.04281385004939631, dom.height)
 
-    @parameterized.expand([
-        ['missing_event_type', {'DateTime': '2021-03-02T00:13:59.5', 'Height': 0.04281385004939631}],
-        ['missing_datetime', {'EventType': 'LowWater', 'Height': 0.04281385004939631}],
-        ['missing_height', {'EventType': 'LowWater', 'DateTime': '2021-03-02T00:13:59.5'}],
-        ['empty_json', {}],
-        ['None_json', None]])
+    @parameterized.expand(
+        [
+            ['missing_event_type', {'DateTime': '2021-03-02T00:13:59.5', 'Height': 0.04281385004939631}],
+            ['missing_datetime', {'EventType': 'LowWater', 'Height': 0.04281385004939631}],
+            ['missing_height', {'EventType': 'LowWater', 'DateTime': '2021-03-02T00:13:59.5'}],
+            ['empty_json', {}],
+            ['None_json', None],
+        ]
+    )
     def test_to_dom_raises_exception_for_incorrect_parameters(self, name, json):
         adm = AdmiraltyDataMapper(get_mocked_AdmiraltyEventTypeMapper())
         self.assertRaises(InvalidDataToMapException, adm.to_dom, json)

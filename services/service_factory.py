@@ -18,7 +18,5 @@ def admiralty_service_instance():
 
 def tidal_service_instance():
     return TidalService(
-        admiralty_service_instance(),
-        AdmiraltyDataMapper(AdmiraltyEventTypeMapper()),
-        AdjustTimeService(),
+        admiralty_service_instance(), AdmiraltyDataMapper(AdmiraltyEventTypeMapper()), AdjustTimeService(),
     )

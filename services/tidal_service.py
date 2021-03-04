@@ -7,10 +7,7 @@ from .external_services.admiralty_service import AdmiraltyService
 
 class TidalService:
     def __init__(
-        self,
-        admiralty_service: AdmiraltyService,
-        mapper: AdmiraltyDataMapper,
-        adjust_time_service: AdjustTimeService,
+        self, admiralty_service: AdmiraltyService, mapper: AdmiraltyDataMapper, adjust_time_service: AdjustTimeService,
     ):
         self._admiralty_service = admiralty_service
         self._mapper = mapper
