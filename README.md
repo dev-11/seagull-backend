@@ -1,4 +1,4 @@
-# code-aws-lambda-python-template-repo
+# seagull backend
 
 [![Build Status](https://travis-ci.org/dev-11/seagull-backend.svg?branch=master)](https://travis-ci.org/dev-11/seagull-backend)
 [![codecov](https://codecov.io/gh/dev-11/seagull-backend/branch/master/graph/badge.svg?token=K8F5X1WFNU)](https://codecov.io/gh/dev-11/seagull-backend)
