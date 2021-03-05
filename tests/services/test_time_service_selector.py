@@ -1,7 +1,7 @@
 import unittest
 
 from services.adjust_time_service import ChiswickEyotTimeService
-from services.time_service_selector import TimeServiceSelector, map_location_to_time_service
+from services.time_service_selector import TimeServiceSelector, map_location_to_time_service, get_all_time_services
 
 
 class TimeServiceSelectorTest(unittest.TestCase):
@@ -45,3 +45,8 @@ class TimeServiceSelectorTest(unittest.TestCase):
     def test_map_location_to_time_service_rasises_error_for_None_location(self):
         location = None
         self.assertRaises(TypeError, map_location_to_time_service, location)
+
+    def test_get_all_time_services(self):
+        all_services = get_all_time_services()
+        self.assertEqual(1, len(all_services))
+        self.assertIsInstance(all_services[0], ChiswickEyotTimeService)
