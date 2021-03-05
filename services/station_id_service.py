@@ -1,5 +1,6 @@
 class StationIdService:
-    def get_station_id(self, location):
+    @staticmethod
+    def get_station_id(location):
         return station_ids[location] if location in station_ids.keys() else None
 
 
