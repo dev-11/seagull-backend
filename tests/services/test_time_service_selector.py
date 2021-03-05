@@ -1,7 +1,7 @@
 import unittest
 
 from services.adjust_time_service import ChiswickEyotTimeService
-from services.time_service_selector import TimeServiceSelector
+from services.time_service_selector import TimeServiceSelector, map_location_to_time_service
 
 
 class TimeServiceSelectorTest(unittest.TestCase):
@@ -26,3 +26,22 @@ class TimeServiceSelectorTest(unittest.TestCase):
         result = tss.select(service_name)
         self.assertIsNotNone(result)
         self.assertIsInstance(result, ChiswickEyotTimeService)
+
+    def test_map_location_to_time_service_returns_correct_value_for_simple_location(self):
+        location = 'asdf'
+        service_name = map_location_to_time_service(location)
+        self.assertEqual('asdf_time', service_name)
+
+    def test_map_location_to_time_service_returns_correct_value_for_complex_location(self):
+        location = 'TestLocation'
+        service_name = map_location_to_time_service(location)
+        self.assertEqual('test_location_time', service_name)
+
+    def test_map_location_to_time_service_returns_correct_value_for_empty_location(self):
+        location = ''
+        service_name = map_location_to_time_service(location)
+        self.assertEqual('_time', service_name)
+
+    def test_map_location_to_time_service_rasises_error_for_None_location(self):
+        location = None
+        self.assertRaises(TypeError, map_location_to_time_service, location)
